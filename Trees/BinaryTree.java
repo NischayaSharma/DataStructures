@@ -1,5 +1,7 @@
 class BinaryTree {
     Node root = null;
+
+
     void makeTree(int data){
         if(root == null){
             root = new Node(data);
@@ -29,11 +31,21 @@ class BinaryTree {
             if(leftNull){
                 nodeA.left = new Node(data);
                 nodeA.left.parent = nodeA;
+                nodeA.left.left = null;
+                nodeA.left.right = null;
             }
             else{
                 nodeA.right = new Node(data);
                 nodeA.right.parent = nodeA;
+                nodeA.right.left = null;
+                nodeA.right.right = null;
             }
         }
+    }
+
+
+    void display() {
+        System.out.println(root.left.left.data);
+        System.out.println(root.left.left.parent.data);
     }
 }
