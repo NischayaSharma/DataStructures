@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+class CqDemo {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter the number of elements you want in a queue: ");
+        int numOfElements = in.nextInt();
+        CircularQueue q = new CircularQueue(numOfElements);
+        int choice = 5;
+        while (choice != 0) {
+            System.out.print("Enter \n1. Display\n2. Insert\n3. Delete\n0. Exit\n");
+            choice = in.nextInt();
+            switch (choice) {
+            case 1:
+                q.display();
+                break;
+            case 2:
+                System.out.print("Enter the number to enter: ");
+                int num = in.nextInt();
+                q.qInsert(num);
+                q.display();
+                break;
+            case 3:
+                q.qDelete();
+                q.display();
+                break;
+            case 0:
+                break;
+            default:
+                System.out.println("Wrong Choice !!!!!");
+                break;
+            }
+        }
+    }
+}

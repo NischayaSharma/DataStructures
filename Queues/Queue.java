@@ -31,15 +31,19 @@ class Queue {
         } else {
             System.out.println("The Queue is Empty(Underflow)");
         }
-        if (front>rear+1){
+        if (front > rear + 1) {
             System.out.println("The Queue is Empty(Underflow)");
         }
     }
 
     void display() {
-        for (int i = front; i <= rear; i++) {
-            System.out.print(arr[i] + ", ");
+        if (rear == -1 && front == -1) {
+
+        } else {
+            for (int i = front; i < rear; i++) {
+                System.out.print(arr[i] + ", ");
+            }
+            System.out.println();
         }
-        System.out.println();
     }
 }

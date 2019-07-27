@@ -1,39 +1,64 @@
 class CircularQueue {
     private int rear = -1, front = -1, max;
-    private int[] arr = new int[rear];
+    private int[] arr = new int[10000];
 
-    Queue(int maximumElements){
+    CircularQueue(int maximumElements) {
         max = maximumElements;
-        for(int i=0 ; i<maximumElements ; i++){
-            arr[i]=-1;
+        for (int i = 0; i < maximumElements; i++) {
+            arr[i] = -1;
         }
     }
 
     void qInsert(int data) {
-        if (rear < max) {
-            if (rear == -1 && front == -1) {
-                front += 1;
+        if ((front == 0 && rear == max - 1) || front == rear + 1)
+            System.out.println("The Queue is Full(Overflow)");
+        else {
+            if (front == -1) {
+                front = 0;
+                rear = 0;
+            } else if (rear == max - 1) {
+                rear = 0;
+            } else {
+                rear += 1;
             }
-            rear += 1;
             arr[rear] = data;
-        } else {
-            System.out.println("The Queue is full(Overflow)");
         }
     }
 
     void qDelete() {
-        if (rear == -1 && front == -1) {
-            arr[front] = -1;
-            front += 1;
+        if (front == -1) {
+            System.out.println("The Queue is empty(Underflow)");
         } else {
-            System.out.println("The Queue is Empty(Underflow)");
+            arr[front] = -1;
+            if (front == rear) {
+                front = -1;
+                rear = -1;
+            } else if (front == max - 1) {
+                front = 0;
+            } else {
+                front += 1;
+            }
         }
     }
 
     void display() {
-        for (int i = front; i < rear; i++) {
-            System.out.print(arr[i] + ", ");
+        if (front <= rear) {
+            if (front == -1) {
+                System.out.println("The Queue is empty.");
+            } else {
+                for (int i = front; i <= rear; i++) {
+                    System.out.print(arr[i] + " ");
+                }
+                System.out.println();
+            }
+        } else {
+            for(int i = front; i<max; i++){
+                System.out.print(arr[i] + " ");
+            }
+            for(int i = 0; i<=rear; i++){
+                System.out.print(arr[i] + " ");
+            }
+            System.out.println();
         }
-        System.out.println();
     }
 }
