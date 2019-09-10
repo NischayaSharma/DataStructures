@@ -1,10 +1,11 @@
-class SinglyLinkedList {
+class CircularLinkedList {
     Node firstNode;
 
     void addAtEnd(int data) {
-        if (firstNode == null)
+        if (firstNode == null) {
             firstNode = new Node(data);
-        else {
+            firstNode.next = firstNode;
+        } else {
             Node ptr = firstNode;
             while (ptr.next != firstNode)
                 ptr = ptr.next;
@@ -15,9 +16,10 @@ class SinglyLinkedList {
     }
 
     void addInMiddle(int data, int checkData) {
-        if (firstNode == null)
+        if (firstNode == null) {
             firstNode = new Node(data);
-        else {
+            firstNode.next = firstNode;
+        } else {
             Node ptr = firstNode;
             while (ptr.next != firstNode && ptr.data != checkData)
                 ptr = ptr.next;
@@ -28,8 +30,11 @@ class SinglyLinkedList {
     }
 
     void addAtBeginning(int data) {
-        if (firstNode == null)
+        if (firstNode == null) {
             firstNode = new Node(data);
+            firstNode.next = firstNode;
+        }
+
         else {
             Node node = new Node(data);
             Node ptr = firstNode;
@@ -43,18 +48,25 @@ class SinglyLinkedList {
 
     void displayList() {
         Node ptr = firstNode;
-        while (ptr != null) {
+        if (firstNode == null)
+            System.out.println("The list is empty.");
+        else {
+            while (ptr.next != firstNode) {
+                System.out.println(ptr.data);
+                ptr = ptr.next;
+            }
             System.out.println(ptr.data);
-            ptr = ptr.next;
         }
     }
 
     void delete(int data) {
         Node ptr = firstNode;
-        while (ptr.next.next != firstNode && ptr.next.data != data)
+        while (ptr.next.data != data)
             ptr = ptr.next;
         Node temp = ptr.next;
         ptr.next = temp.next;
         temp.next = null;
+        if(temp == firstNode)
+            firstNode = ptr.next;
     }
 }

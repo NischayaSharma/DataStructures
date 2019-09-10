@@ -43,15 +43,15 @@ class Demo {
                     System.out.print("Enter the data to delete: ");
                     data  = in.nextInt();
                     linkList.delete(data);
-                case 4:
-                    linkList.displayList();
-                    System.out.print("Enter the data you want to change: ");
-                    data = in.nextInt();
-                    System.out.print("Enter the new data: ");
-                    int newData = in.nextInt();
-                    linkList.updateData(data, newData);
-                    System.out.println();
-                    linkList.displayList();
+                // case 4:
+                //     linkList.displayList();
+                //     System.out.print("Enter the data you want to change: ");
+                //     data = in.nextInt();
+                //     System.out.print("Enter the new data: ");
+                //     int newData = in.nextInt();
+                //     linkList.updateData(data, newData);
+                //     System.out.println();
+                //     linkList.displayList();
             }
         }      
     }
