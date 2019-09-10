@@ -19,13 +19,16 @@ class Stack {
         else
             System.out.println("Overflow(The stack is full)");
     }
-    void pop(){
+    int pop(){
+        int topElement = 0;
         if(top>=0){
+            topElement = arr[top];
             arr[top]=-1;
             top -= 1;
         }
         else
             System.out.println("Underflow(The Stack is empty)");
+        return topElement;
     }
     void display(){
         for(int i=0 ; i<=top ; i++){
