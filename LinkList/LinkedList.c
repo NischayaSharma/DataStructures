@@ -14,6 +14,7 @@ struct node
     struct node *next;
 };
 struct node *head = NULL;
+struct node *last = NULL;
 int item, x, count = 1, total = 0;
 int main()
 {
